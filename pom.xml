@@ -13,8 +13,11 @@
         <module>hm-service</module>
         <module>cart-service</module>
         <module>items-service</module>
-        <module>user-service</module>
         <module>hm-api</module>
+        <module>user-service</module>
+        <module>trade-service</module>
+        <module>pay-service</module>
+        <module>hm-gateway</module>
     </modules>
 
     <parent>
