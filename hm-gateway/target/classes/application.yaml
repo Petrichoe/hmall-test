@@ -34,7 +34,6 @@ hm:
     alias: hmall
     password: hmall123
     tokenTTL: 30m
-
   auth:
     excludePaths:
       - /search/**

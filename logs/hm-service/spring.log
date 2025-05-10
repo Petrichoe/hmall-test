@@ -6562,3 +6562,34 @@ Caused by: java.net.ConnectException: Connection timed out: connect
 11:34:57:718 DEBUG 49980 --- [http-nio-8080-exec-2] com.hmall.mapper.ItemMapper.selectPage   : <==      Total: 20
 11:35:06:337  INFO 49980 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 11:35:06:349  INFO 49980 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+17:00:52:545  INFO 5860 --- [main] com.hmall.HMallApplication               : Starting HMallApplication using Java 11 on ASUS2023 with PID 5860 (D:\computer technology\code\Project-me\hm-mall project\hmall\hm-service\target\classes started by ChenYangkun in D:\computer technology\code\Project-me\hm-mall project\hmall)
+17:00:52:549 DEBUG 5860 --- [main] com.hmall.HMallApplication               : Running with Spring Boot v2.7.12, Spring v5.3.27
+17:00:52:550  INFO 5860 --- [main] com.hmall.HMallApplication               : The following 1 profile is active: "local"
+17:00:53:337  INFO 5860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+17:00:53:339  INFO 5860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+17:00:53:373  INFO 5860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces.
+17:00:53:853  INFO 5860 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+17:00:53:861  INFO 5860 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+17:00:53:862  INFO 5860 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.75]
+17:00:54:044  INFO 5860 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+17:00:54:044  INFO 5860 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1451 ms
+17:00:58:092  INFO 5860 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+17:00:58:411  WARN 5860 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+17:00:58:432  INFO 5860 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+17:00:58:445  INFO 5860 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+17:00:58:461 ERROR 5860 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
