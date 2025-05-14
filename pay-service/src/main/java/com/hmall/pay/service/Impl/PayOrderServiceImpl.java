@@ -16,6 +16,9 @@ import com.hmall.pay.enums.PayStatus;
 import com.hmall.pay.mapper.PayOrderMapper;
 import com.hmall.pay.service.IPayOrderService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,11 +35,14 @@ import java.time.LocalDateTime;
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PayOrderServiceImpl extends ServiceImpl<PayOrderMapper, PayOrder> implements IPayOrderService {
 
     //private final IUserService userService;
 
     //private final IOrderService orderService;
+
+    private final RabbitTemplate rabbitTemplate;
 
 
     private final UserClient userClient;
@@ -75,7 +81,14 @@ public class PayOrderServiceImpl extends ServiceImpl<PayOrderMapper, PayOrder> i
 //        order.setStatus(2);
 //        order.setPayTime(LocalDateTime.now());
 //        orderService.updateById(order);
-        tradeClient.markOrderPaySuccess(po.getBizOrderNo());
+        //TODO 修改订单状态
+        //tradeClient.markOrderPaySuccess(po.getBizOrderNo()); //同步调用
+        try {
+            rabbitTemplate.convertAndSend("pay.direct","pay.success",po.getBizOrderNo());
+        } catch (AmqpException e) {
+            log.error("发送支付状态通知失败，订单id:{}",po.getBizOrderNo(),e);
+        }
+
     }
 
     public boolean markPayOrderSuccess(Long id, LocalDateTime successTime) {
