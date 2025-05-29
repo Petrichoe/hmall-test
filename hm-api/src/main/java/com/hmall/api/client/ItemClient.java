@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Collection;
 import java.util.List;
 
-@FeignClient(value = "item-service",fallbackFactory = ItemClientfallbackFactory.class) //远程调用失败走fallback逻辑
+@FeignClient(value = "items-service",fallbackFactory = ItemClientfallbackFactory.class) //远程调用失败走fallback逻辑
 public interface ItemClient {
     @GetMapping("/items")
     List<ItemDTO> queryItemByIds(@RequestParam("ids") Collection<Long> ids);
